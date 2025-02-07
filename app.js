@@ -7,3 +7,15 @@ const evenNumber = (arr) => {
 };
 
 console.log(evenNumber(numbers));
+
+// Array Flattening: Create a function that flattens a nested array of any depth.
+
+const array = [1, [2, [3, [4]], 5]];
+
+const flatArray = (arr)=>{
+    return arr.reduce((x , y) =>
+        Array.isArray(y) ? x.concat(flatArray(y)) : x.concat(y) , [] );
+}
+
+console.log(flatArray(array))
+
