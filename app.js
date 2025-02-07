@@ -19,3 +19,20 @@ const flatArray = (arr)=>{
 
 console.log(flatArray(array))
 
+// Random Joke Generator: Create a button that fetches a random joke from Chuck Norris API and shows a loading state while fetching.
+
+const jokeText = document.querySelector("#joke")
+const jokeBtn = document.querySelector("#jokeBtn")
+
+const fetchJoke = async () => {
+    try{
+        jokeText.textContent = "Loading..."
+        const response = await fetch("https://api.chucknorris.io/jokes/random");
+        const data = await response.json();
+        jokeText.textContent = data.value;
+    } catch (error){
+        jokeText.textContent = "failed , try again"
+    }
+}
+
+jokeBtn.addEventListener("click" , fetchJoke)
