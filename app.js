@@ -8,7 +8,7 @@ const evenNumber = (arr) => {
 
 console.log(evenNumber(numbers));
 
-// Array Flattening: Create a function that flattens a nested array of any depth.
+// 2.Array Flattening: Create a function that flattens a nested array of any depth.
 
 const array = [1, [2, [3, [4]], 5]];
 
@@ -19,7 +19,7 @@ const flatArray = (arr)=>{
 
 console.log(flatArray(array))
 
-// Random Joke Generator: Create a button that fetches a random joke from Chuck Norris API and shows a loading state while fetching.
+// 3.Random Joke Generator: Create a button that fetches a random joke from Chuck Norris API and shows a loading state while fetching.
 
 const jokeText = document.querySelector("#joke")
 const jokeBtn = document.querySelector("#jokeBtn")
@@ -36,3 +36,47 @@ const fetchJoke = async () => {
 }
 
 jokeBtn.addEventListener("click" , fetchJoke)
+
+
+// 4.Create a function to sort an array of numbers and display the sorted list. 
+
+const sorts = (numbers)=>{
+    let sortedNumbers = numbers.sort((a , b)=> a - b);
+    console.log("sort list:" , sortedNumbers);
+}
+
+const nums = [10, 88 , 56 , 75 , 21 , 2 , 5]
+
+sorts(nums)
+
+
+// 5.Object Property Counter: Write a function that counts how many properties an object has, including nested objects
+
+const test = {
+    name: "ali",
+    age: 23,
+    address: {
+        city: "ramsar",
+    },
+    skills: {
+        programming: ["JavaScript", "html"],
+        design: ["Photoshop", "Figma"]
+    }
+};
+
+
+const countProperties = (obj) => {
+    let count = 0;
+    
+    Object.keys(obj).forEach(key => {
+        count++; 
+        
+        if (typeof obj[key] === "object" && obj[key] !== null) {
+            count += countProperties(obj[key]);
+        }
+    });
+
+    return count;
+};
+
+console.log(countProperties(test))
