@@ -80,3 +80,51 @@ const countProperties = (obj) => {
 };
 
 console.log(countProperties(test))
+
+
+// 6. Change the background color of the webpage when a button is clicked.
+
+const changeBackgroundColor = () => {
+    const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    document.body.style.backgroundColor = randomColor;
+};
+
+const button = document.createElement("button");
+button.textContent = "Change Background Color";
+button.style.padding = "10px 20px";
+button.style.fontSize = "16px";
+button.style.cursor = "pointer";
+button.style.margin = "20px";
+button.addEventListener("click", changeBackgroundColor);
+
+document.body.appendChild(button);
+
+// 7.Create a simple countdown timer that counts down from a specified number of seconds.
+
+const startCountdown = (seconds) => {
+    const display = document.createElement("h1");
+    display.textContent = seconds;
+    document.body.appendChild(display);
+
+    const interval = setInterval(() => {
+        seconds--;
+        display.textContent = seconds;
+
+        if (seconds <= 0) {
+            clearInterval(interval);
+            display.textContent = "End";
+        }
+    }, 1000);
+};
+
+const button2 = document.createElement("button");
+button2.textContent = "Start Countdown";
+button2.style.padding = "10px 20px";
+button2.style.fontSize = "16px";
+button2.style.cursor = "pointer";
+button2.style.margin = "20px";
+
+button2.addEventListener("click", () => startCountdown(10));
+
+document.body.appendChild(button2);
+
