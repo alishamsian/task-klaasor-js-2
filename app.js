@@ -128,3 +128,72 @@ button2.addEventListener("click", () => startCountdown(10));
 
 document.body.appendChild(button2);
 
+
+
+// 8.Card Generator: Create a function that generates a card element with a title, content, and a delete button.
+
+const addCardBtn = document.getElementById("addCardBtn")
+
+addCardBtn.addEventListener("click", () => {
+    createCard("Card Title", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, qui!");
+});
+
+const createCard = (title, content) => {
+    const cardContainer = document.querySelector(".card-container");
+
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    const cardTitle = document.createElement("h2");
+    cardTitle.textContent = title;
+
+    const cardContent = document.createElement("p");
+    cardContent.textContent = content;
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("delete-btn");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.addEventListener("click", () => card.remove());
+
+    card.appendChild(cardTitle);
+    card.appendChild(cardContent);
+    card.appendChild(deleteBtn);
+    cardContainer.appendChild(card);
+};
+
+// 9.Email Validator: Create a function that checks if a string contains a valid email pattern using string methods (no regex).
+
+const isValidEmail = (email) => {
+
+    if (!email.includes("@")) return false;
+
+    const parts = email.split("@");
+    if (parts.length !== 2) return false; 
+
+    const localPart = parts[0];
+    const domainPart = parts[1];
+
+    if (!domainPart.includes(".")) return false;
+
+    const domainSections = domainPart.split(".");
+    if (domainSections.some(section => section.length === 0)) return false;
+
+    return localPart.length > 0 && domainPart.length > 1;
+};
+
+console.log(isValidEmail("alishamsian504@gmail.com")); 
+console.log(isValidEmail("alishamsian504.com")); 
+
+
+// Array Transformation: Create a function that transforms an array of strings into an array of objects with a length property.
+
+const users = ["ali", "kasra", "mani", "ali"];
+
+const transformArray = (arr) => {
+    return arr.map(str => ({
+        value: str,
+        length: str.length
+    }));
+};
+
+console.log(transformArray(users));
